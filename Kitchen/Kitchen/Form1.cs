@@ -48,10 +48,14 @@ namespace Kitchen
                 //Console.WriteLine(args.Data);
                 //addToKitchen(args.Path);
                 //addItem();
-                Console.WriteLine("changed");
-                getNewOrderDetails(args.Path.ToString());
-                
-                
+                //Console.WriteLine("changed");
+                //Console.WriteLine(args.Path.ToString());
+                //String x = args.Path.ToString();
+                //String y = x.Remove(x.Length - 3);
+                //Console.WriteLine(y);
+                getOrderNo(args.Data.ToString());
+
+
 
             });
           
@@ -100,11 +104,21 @@ namespace Kitchen
         {
 
         }
-
-        public async void getNewOrderDetails(String path)
+        public async void getOrderNo(String path)
         {
             Console.WriteLine("firebase called");
-            FirebaseResponse response = await client.GetAsync("Orders/007/" + path);
+            FirebaseResponse response = await client.GetAsync("pending/" + path);
+            PendingOrderData obj = response.ResultAs<PendingOrderData>();
+            //String tbleNo = obj.tbleNo;
+            String orderNo = obj.orderNo;
+            getNewOrderDetails( orderNo);
+           
+        }
+
+        public async void getNewOrderDetails(String orderNo)
+        {
+            Console.WriteLine("firebase called");
+            FirebaseResponse response = await client.GetAsync("Orders/"+ orderNo);
             ItemDetails obj = response.ResultAs<ItemDetails>();
             Console.WriteLine(obj.itemCode);
             Console.WriteLine(obj.qty);
@@ -119,7 +133,7 @@ namespace Kitchen
             this.size = size;
             this.qty = qty;
             addItem();
-            deleteFromPending(path);
+            deleteFromPending(orderNo);
             //read();
 
         }

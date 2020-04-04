@@ -93,6 +93,7 @@
     <Compile Include="OrdersNew.Designer.cs">
       <DependentUpon>OrdersNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="PendingOrderData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
