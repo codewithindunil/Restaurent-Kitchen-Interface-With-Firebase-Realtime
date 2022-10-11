@@ -47,7 +47,7 @@ namespace Kitchen
                 //Console.WriteLine(args.Path);
                 //Console.WriteLine(args.Data);
                 //addToKitchen(args.Path);
-                //addItem();
+                //addItem(); this will add items to fb
                 //Console.WriteLine("changed");
                 //Console.WriteLine(args.Path.ToString());
                 //String x = args.Path.ToString();
